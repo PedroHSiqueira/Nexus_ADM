@@ -3,8 +3,8 @@ import { ProdutoI } from "@/utils/types/produtos";
 import { useEffect, useState } from "react";
 import { useClienteStore } from "@/context/cliente";
 import Banner from "@/components/banner";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { DollarSign, Link, Package, TextIcon, Users } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Package, TextIcon, Users } from "lucide-react";
 import ChartOverview from "@/components/chart";
 import Sales from "@/components/sales";
 import { ClienteI } from "@/utils/types/clientes";
@@ -12,17 +12,17 @@ import { MarcaI } from "@/utils/types/marcas";
 import { AvaliacoesI } from "@/utils/types/avaliacoes";
 
 interface geralDadosI {
-  clientes: number
-  carros: number
-  propostas: number
+  clientes: number;
+  carros: number;
+  propostas: number;
 }
 
 export default function Home() {
   const [produtos, setProdutos] = useState<ProdutoI[]>([]);
-  const [pessoas, setPessoas] = useState<ClienteI[]>([])
-  const [marcas, setMarcas] = useState<MarcaI[]>([])
-  const [avaliacoes, setAvaliacoes] = useState<AvaliacoesI[]>([])
-  const [dados, setDados] = useState<geralDadosI>({} as geralDadosI)
+  const [pessoas, setPessoas] = useState<ClienteI[]>([]);
+  const [marcas, setMarcas] = useState<MarcaI[]>([]);
+  const [avaliacoes, setAvaliacoes] = useState<AvaliacoesI[]>([]);
+  const [dados, setDados] = useState<geralDadosI>({} as geralDadosI);
   const { logaCliente } = useClienteStore();
 
   useEffect(() => {
@@ -46,41 +46,41 @@ export default function Home() {
     }
     getDados();
 
-    async function getPessoas(){
+    async function getPessoas() {
       const response = await fetch(`${process.env.NEXT_PUBLIC_URL_API}/clientes`);
       const dados = await response.json();
       setPessoas(dados);
     }
-    getPessoas()
+    getPessoas();
 
-    async function getMarcas(){
+    async function getMarcas() {
       const response = await fetch(`${process.env.NEXT_PUBLIC_URL_API}/marcas`);
       const dados = await response.json();
       setMarcas(dados);
     }
-    getMarcas()
+    getMarcas();
 
-    async function getAvaliacoes(){
+    async function getAvaliacoes() {
       const response = await fetch(`${process.env.NEXT_PUBLIC_URL_API}/avaliacoes`);
       const dados = await response.json();
       setAvaliacoes(dados);
     }
-    getAvaliacoes()
+    getAvaliacoes();
   }, []);
 
   return (
-    <div  className="sm:ml-14 p-4">
+    <div className="sm:ml-14 p-4">
       <Banner />
       <section className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-4">
         <Card>
           <CardHeader>
             <div className="flex items-center justify-center ">
               <CardTitle className="text-lg sm:text-xl text-gray-800 select-none">
-              <a href="/principal/listarProdutos">Qtd. de Produtos</a>
+                <a href="/principal/listarProdutos">Qtd. de Produtos</a>
               </CardTitle>
-              <Package className="ml-auto w-4 h-4 "/>
+              <Package className="ml-auto w-4 h-4 " />
             </div>
-            <CardContent >
+            <CardContent>
               <h1 className="mt-3 text-base sm:text-lg font-bold">{produtos.length}</h1>
             </CardContent>
           </CardHeader>
@@ -88,12 +88,12 @@ export default function Home() {
         <Card>
           <CardHeader>
             <div className="flex items-center justify-center ">
-             <CardTitle className="text-lg sm:text-xl text-gray-800 select-none">
-             <a href="/principal/listarMarcas"> Marcas Cadastradas</a>
+              <CardTitle className="text-lg sm:text-xl text-gray-800 select-none">
+                <a href="/principal/listarMarcas"> Marcas Cadastradas</a>
               </CardTitle>
-              <Users className="ml-auto w-4 h-4 "/> 
+              <Package className="ml-auto w-4 h-4 " />
             </div>
-            <CardContent >
+            <CardContent>
               <h1 className="mt-3 text-base sm:text-lg font-bold">{marcas.length}</h1>
             </CardContent>
           </CardHeader>
@@ -101,12 +101,10 @@ export default function Home() {
         <Card>
           <CardHeader>
             <div className="flex items-center justify-center ">
-              <CardTitle className="text-lg sm:text-xl text-gray-800 select-none">
-              Usuarios Cadastrados
-              </CardTitle>
-              <Users className="ml-auto w-4 h-4 "/>
+              <CardTitle className="text-lg sm:text-xl text-gray-800 select-none">Usuários Cadastrados</CardTitle>
+              <Users className="ml-auto w-4 h-4 " />
             </div>
-            <CardContent >
+            <CardContent>
               <h1 className="mt-3 text-base sm:text-lg font-bold">{pessoas.length}</h1>
             </CardContent>
           </CardHeader>
@@ -115,11 +113,11 @@ export default function Home() {
           <CardHeader>
             <div className="flex items-center justify-center ">
               <CardTitle className="text-lg sm:text-xl text-gray-800 select-none">
-              <a href="/principal/listarAvaliacoes"> Avaliações Recebidas</a>
+                <a href="/principal/listarAvaliacoes"> Avaliações Recebidas</a>
               </CardTitle>
-              <TextIcon className="ml-auto w-4 h-4 "/>
+              <TextIcon className="ml-auto w-4 h-4 " />
             </div>
-            <CardContent >
+            <CardContent>
               <h1 className="mt-3 text-base sm:text-lg font-bold">{avaliacoes.length}</h1>
             </CardContent>
           </CardHeader>

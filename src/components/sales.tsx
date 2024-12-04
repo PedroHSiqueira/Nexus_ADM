@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { CircleDollarSign } from "lucide-react";
+import { ClipboardList } from "lucide-react";
 
 interface AvaliacoesI {
   id: number;
@@ -42,7 +42,7 @@ export default function AvaliacoesCard() {
       <CardHeader>
         <div className="flex items-center justify-center">
           <CardTitle className="text-lg sm:text-xl text-gray-800">Últimas Avaliações</CardTitle>
-          <CircleDollarSign className="ml-auto h-4 w-4" />
+          <ClipboardList className="ml-auto h-4 w-4" />
         </div>
       </CardHeader>
       <CardContent>

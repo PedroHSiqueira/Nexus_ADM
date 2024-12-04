@@ -1,5 +1,5 @@
 "use client"
-import { DollarSign } from "lucide-react";
+import { DollarSign, Package } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { ChartConfig, ChartContainer } from "./ui/chart";
 import { Bar, CartesianGrid, XAxis, BarChart } from "recharts";
@@ -8,11 +8,7 @@ const chartConfig = {
   desktop: {
     label: "Desktop",
     color: "#2563eb",
-  },
-  mobile: {
-    label: "Mobile",
-    color: "#60a5fa",
-  },
+  }
 } satisfies ChartConfig;
 
 export default function ChartOverview() {
@@ -32,7 +28,7 @@ const chartData = [
       <CardHeader>
         <div className="flex items-center justify-center">
           <CardTitle className="text-lg sm:text-xl text-gray-800">Overview Avaliações</CardTitle>
-          <DollarSign className="ml-auto h-4 w-4" />
+          <Package className="ml-auto h-4 w-4" />
         </div>
       </CardHeader>
       <CardContent>
